@@ -67,7 +67,7 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
 
-                Text("Score: ???")
+                Text("Score: \(userScore)")
                     .foregroundStyle(.white)
                     .font(.title.bold())
 
@@ -79,9 +79,6 @@ struct ContentView: View {
             Button("Continue", action: nextRound)
         } message: {
             Text("Your score is \(userScore) points.")
-            if (didUserGuessedCorrectly == false) {
-                Text("Wrong! That is the flag of \(countries[userAnswer])")
-            }
         }
         .alert("THE END", isPresented: $endingGame) {
             Button("Replay", action: nextRound)
@@ -101,6 +98,9 @@ struct ContentView: View {
             didUserGuessedCorrectly = true
         } else {
             scoreTitle = "Wrong"
+            if (didUserGuessedCorrectly == false) {
+                Text("Wrong! That is the flag of \(countries[userAnswer])")
+            }
             userScore -= 5
             didUserGuessedCorrectly = false
         }

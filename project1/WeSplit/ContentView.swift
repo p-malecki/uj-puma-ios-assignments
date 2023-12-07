@@ -44,13 +44,15 @@ struct ContentView: View {
 
                 Section("How much do you want to tip?") {
                     Text("Current Tip percentage: \(tipPercentage)%")
-                                        Button("Change") {  }
-                    .buttonStyle(.bordered)
-                    .navigationDestination(destination: PickerDetailView())
+                    NavigationLink(destination: PickerDetailView(tipPercentage: $tipPercentage)) {
+                        Text("Change")
+                    }
                 }
 
+                
                 Section("Amount per person") {
 					Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundColor(tipPercentage == 0 ? .red : .black)
 				}
 
 				Section("The total amount for the check") {

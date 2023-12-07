@@ -7,18 +7,20 @@
 import SwiftUI
 
 struct PickerDetailView: View {
-    @State private var numberOfPeople = 2
+    @Binding var tipPercentage: Int
   
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Tip percentage", selection: $tipPercentage) {
-                    ForEach(0 ..< 101, id: \.self) {
-                        Text($0, format: .percent)
+                Section ("Select current Tip percentage") {
+                    Picker("Tip percentage", selection: $tipPercentage) {
+                        ForEach(0 ..< 101, id: \.self) {
+                            Text($0, format: .percent)
+                        }
                     }
                 }
             }
-            .navigationTitle("Select current Tip percentage")
+            .navigationTitle("Tip percentage")
         }
     }
 }

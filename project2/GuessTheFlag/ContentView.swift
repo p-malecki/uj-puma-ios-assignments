@@ -8,6 +8,28 @@
 
 import SwiftUI
 
+struct FlagImage: View {
+    var img: String
+    var body: some View {
+        Image(img)
+            .flagImageModified()
+    }
+}
+
+struct FlagImageModifier: ViewModifier {
+  func body(content: Content) -> some View {
+      content
+          .clipShape(.capsule)
+          .shadow(radius: 5)
+    }
+}
+
+extension View {
+    func flagImageModified() -> some View {
+        modifier(FlagImageModifier())
+    }
+}
+
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
 
@@ -15,9 +37,9 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var userScore = 0
 
-    @State private var didUserGuessedCorrectly = false
     @State private var userAnswer = 0
     @State private var correctAnswer = Int.random(in: 0...2)
+    @State private var message = ""
 
     @State private var currentRound = 1
     @State private var endingGame = false
@@ -53,9 +75,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(countries[number])
-                                .clipShape(.capsule)
-                                .shadow(radius: 5)
+                            FlagImage(img: countries[number])
                         }
                     }
                 }
@@ -79,11 +99,12 @@ struct ContentView: View {
             Button("Continue", action: nextRound)
         } message: {
             Text("Your score is \(userScore) points.")
+            Text(message)
         }
         .alert("THE END", isPresented: $endingGame) {
             Button("Replay", action: nextRound)
             .buttonStyle(.borderedProminent)
-            Button("Finish", role: .destructive)
+            Button("Finish", role: .destructive, action: {})
             .buttonStyle(.bordered)
         } message: {
             Text("Good game!\nYour score is \(userScore) points.")
@@ -95,14 +116,10 @@ struct ContentView: View {
         if userAnswer == correctAnswer {
             scoreTitle = "Correct"
             userScore += 10
-            didUserGuessedCorrectly = true
         } else {
             scoreTitle = "Wrong"
-            if (didUserGuessedCorrectly == false) {
-                Text("Wrong! That is the flag of \(countries[userAnswer])")
-            }
+            message = "Wrong! That is the flag of \(countries[userAnswer])"
             userScore -= 5
-            didUserGuessedCorrectly = false
         }
 
         showingScore = true
@@ -118,6 +135,7 @@ struct ContentView: View {
             currentRound += 1
         } else {
             currentRound = 0
+            userScore = 0
             endingGame = true
         }
         askQuestion()

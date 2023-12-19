@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "6c78410a59c8beb4",
+        "id": "deb3219bec180550",
         "type": "tabs",
         "children": [
           {
-            "id": "0ad77b7a74fc328e",
+            "id": "32fcc74fbb8fe94b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 4 - betterRest (ML).md",
+                "file": "hackingwithswift - swiftUI/project 1&2.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 4 - betterRest (ML).md",
+                "file": "hackingwithswift - swiftUI/project 1&2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 4 - betterRest (ML).md",
+                "file": "hackingwithswift - swiftUI/project 1&2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 4 - betterRest (ML).md"
+                "file": "hackingwithswift - swiftUI/project 1&2.md"
               }
             }
           }
@@ -146,9 +146,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0ad77b7a74fc328e",
+  "active": "32fcc74fbb8fe94b",
   "lastOpenFiles": [
+    "attachments/Pasted image 20231220001151.png",
     "hackingwithswift - swiftUI/project 1&2.md",
+    "attachments",
+    "swiftUI-12.png.md",
     "hackingwithswift - swiftUI/project 4 - betterRest (ML).md",
     "hackingwithswift - swiftUI"
   ]

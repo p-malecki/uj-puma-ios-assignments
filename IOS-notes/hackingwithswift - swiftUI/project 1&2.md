@@ -92,7 +92,7 @@ ForEach(0 ..< 100) {
     }
 ```
 
-## `Picker` view
+## Picker view
 ___
 Pickers, like text fields, need a two-way binding to a property so they can track their value.
 ```swift
@@ -178,7 +178,7 @@ Color(red: 1, green: 0.8, blue: 0)
 
 _the safe area_
 `.ignoresSafeArea()` modifier to specify which screen edges you want to run up to
-![[swiftUI.png|326]]
+
 
 ```swift
 .foregroundStyle(.secondary)
@@ -186,11 +186,11 @@ _the safe area_
 ```swift
 .background(.ultraThinMaterial)
 ```
-![[swiftUI-1.png]]
 
 ## gradients
 ___
- linear gradient goes in one direction ![[swiftUI-2.png|65]]
+ linear gradient goes in one direction 
+
 ```swift
 LinearGradient(colors: [.white, .black], startPoint: .top, endPoint: .bottom)
 ```
@@ -201,7 +201,7 @@ LinearGradient(stops: [
     Gradient.Stop(color: .black, location: 0.55),
 ], startPoint: .top, endPoint: .bottom)
 ```
-![[swiftUI-4.png|119]]
+
 as a shortcut we can just write `.init` rather than `Gradient.Stop`
 ```swift
 LinearGradient(stops: [
@@ -214,12 +214,11 @@ radial gradients move outward in a circle shape
 ```swift
 RadialGradient(colors: [.blue, .black], center: .center, startRadius: 20, endRadius: 200)
 ```
-![[swiftUI-5.png|104]]
 
 ```swift
 AngularGradient(colors: [.red, .yellow, .green, .blue, .purple, .red], center: .center)
 ```
-![[swiftUI-7.png|92]]
+
 
 **gradient is created by simply adding `.gradient` after any color**
 ```swift
@@ -257,7 +256,7 @@ VStack {
         .buttonStyle(.borderedProminent)
 }
 ```
-![[swiftUI-9.png]]
+
 ```swift
 .buttonStyle(.borderedProminent)
     .tint(.mint)
@@ -274,7 +273,7 @@ Button {
         .background(.red)
 }
 ```
-![[swiftUI-12.png]]
+
 
 ### images
 ___
@@ -301,6 +300,7 @@ ___
 ```swift
 .font(.largeTitle.weight(.semibold))
 ```
+![[Pasted image 20231220001151.png]]
 ## alert messages
 ___
 we create some state that tracks whether our alert is showing
@@ -323,7 +323,7 @@ struct ContentView: View {
     }
 }
 ```
-![[swiftUI-14.png|252]]
+
 
 - $ two-way data binding because SwiftUI will automatically set `showingAlert` back to false when the alert is dismissed
 - _any_ button inside an alert will automatically dismiss the alert

@@ -30,6 +30,17 @@ extension View {
     }
 }
 
+
+extension AnyTransition {
+    static var pivot: AnyTransition {
+        .modifier(
+            active: CornerRotateModifier(amount: -90, anchor: .topLeading),
+            identity: .opacity
+        )
+    }
+}
+
+
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
 
@@ -43,6 +54,10 @@ struct ContentView: View {
 
     @State private var currentRound = 1
     @State private var endingGame = false // project 2 challange #3
+
+    @State private var animateFlag360Spin = 0.0
+    @State private var animateFlagOpacity = [true, true, true]
+    @State private var animateFlagSize = [1.0, 1.0, 1.0]
 
     let numberOfRounds = 8
 
@@ -71,12 +86,26 @@ struct ContentView: View {
                             .font(.largeTitle.weight(.semibold))
                     }
 
-                    ForEach(0..<3) { number in
+                    ForEach(0..<3) { selectedIndex in
                         Button {
-                            flagTapped(number)
+                            withAnimation(.spring(duration: 1, bounce: 0.5)) {  // project 6 challange #1
+                                animateFlag360Spin += 360
+                            }
+                            withAnimation(.spring().speed(0.2)) {  // project 6 challange #2
+                                animateFlagOpacity.indices.forEach { index in
+                                    animateFlagOpacity[index] = (index == selectedIndex)
+                                    animateFlagSize[index] = (index == selectedIndex) ? animateFlagSize[index] : 0.5
+                                }
+                            }
+                            flagTapped(selectedIndex)
                         } label: {
-                            FlagImage(img: countries[number]) // project 3 challange #3
+                            FlagImage(img: countries[numbselectedIndexer]) // project 3 challange #3
                         }
+                        .rotation3DEffect(.degrees(animateFlag360Spin), axis: (x: 0, y: 1, z: 0))
+                        .opacity(animateFlagOpacity[selectedIndex] ? 1.0 : 0.25)
+                        .animation(nil, value: enabled)
+                        .scaleEffect(animateFlagSize[selectedIndex])  // project 6 challange #3
+                        .animation(.easeInOut(duration: 1), value: animateFlagSize[selectedIndex])
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -133,6 +162,8 @@ struct ContentView: View {
     func nextRound() {
         if (currentRound < numberOfRounds) {
             currentRound += 1
+            animateFlagOpacity = [true, true, true]
+            animateFlagSize = [1.0, 1.0, 1.0]
         } else {
             currentRound = 0
             userScore = 0

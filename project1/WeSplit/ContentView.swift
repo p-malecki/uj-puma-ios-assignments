@@ -44,18 +44,18 @@ struct ContentView: View {
 
                 Section("How much do you want to tip?") {
                     Text("Current Tip percentage: \(tipPercentage)%")
-                    NavigationLink(destination: PickerDetailView(tipPercentage: $tipPercentage)) {
+                    NavigationLink(destination: PickerDetailView(tipPercentage: $tipPercentage)) { // project 1 challange #3
                         Text("Change")
                     }
                 }
 
                 
-                Section("Amount per person") {
+                Section("Amount per person") { // project 1 challange #1
 					Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                        .foregroundColor(tipPercentage == 0 ? .red : .black)
+                        .foregroundColor(tipPercentage == 0 ? .red : .black)  // project 3 challange #1
 				}
 
-				Section("The total amount for the check") {
+				Section("The total amount for the check") {  // project 1 challange #2
 					Text(totalAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
 				}
             }

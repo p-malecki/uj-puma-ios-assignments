@@ -32,9 +32,9 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Form {
-                //VStack(alignment: .leading, spacing: 0) {  #1
+                //VStack(alignment: .leading, spacing: 0) { 
                 Section() {
-                    Text("When do you want to wake up?")
+                    Text("When do you want to wake up?") // project 4 challange #1
                         .font(.headline)
                     
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
@@ -57,8 +57,8 @@ struct ContentView: View {
                     Text("Daily coffee intake")
                         .font(.headline)
                     
-                    //Stepper("^[\(coffeeAmount) cup](inflect: true)", value: $coffeeAmount, in: 1...20) #2
-                    Picker("Number of cups", selection: $coffeeAmount) {
+                    //Stepper("^[\(coffeeAmount) cup](inflect: true)", value: $coffeeAmount, in: 1...20)
+                    Picker("Number of cups", selection: $coffeeAmount) { // project 4 challange #2
                         ForEach(1 ..< 21) {
                             Text("^[\($0) cup](inflect: true)")
                         }
@@ -83,11 +83,10 @@ struct ContentView: View {
                 
             }
             .navigationTitle("BetterRest")
-            // #3
             // .toolbar {
             //     Button("Calculate", action: calculateBedtime)
             // }
-            .alert(alertTitle, isPresented: $showingAlert) {
+            .alert(alertTitle, isPresented: $showingAlert) {  // project 4 challange #3
                 Button("OK") {
                     showingAlert = false
                 }

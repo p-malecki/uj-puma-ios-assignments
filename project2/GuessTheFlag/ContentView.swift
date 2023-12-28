@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FlagImage: View {
+struct FlagImage: View { // project 3 challange #2
     var img: String
     var body: some View {
         Image(img)
@@ -16,7 +16,7 @@ struct FlagImage: View {
     }
 }
 
-struct FlagImageModifier: ViewModifier {
+struct FlagImageModifier: ViewModifier {  // project 3 challange #3
   func body(content: Content) -> some View {
       content
           .clipShape(.capsule)
@@ -35,14 +35,14 @@ struct ContentView: View {
 
     @State private var showingScore = false
     @State private var scoreTitle = ""
-    @State private var userScore = 0
+    @State private var userScore = 0 // project 2 challange #1
 
     @State private var userAnswer = 0
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var message = ""
 
     @State private var currentRound = 1
-    @State private var endingGame = false
+    @State private var endingGame = false // project 2 challange #3
 
     let numberOfRounds = 8
 
@@ -75,7 +75,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            FlagImage(img: countries[number])
+                            FlagImage(img: countries[number]) // project 3 challange #3
                         }
                     }
                 }
@@ -87,7 +87,7 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
 
-                Text("Score: \(userScore)")
+                Text("Score: \(userScore)") // project 2 challange #1
                     .foregroundStyle(.white)
                     .font(.title.bold())
 
@@ -101,7 +101,7 @@ struct ContentView: View {
             Text("Your score is \(userScore) points.")
             Text(message)
         }
-        .alert("THE END", isPresented: $endingGame) {
+        .alert("THE END", isPresented: $endingGame) { // project 2 challange #3
             Button("Replay", action: nextRound)
             .buttonStyle(.borderedProminent)
             Button("Finish", role: .destructive, action: {})
@@ -118,7 +118,7 @@ struct ContentView: View {
             userScore += 10
         } else {
             scoreTitle = "Wrong"
-            message = "Wrong! That is the flag of \(countries[userAnswer])"
+            message = "Wrong! That is the flag of \(countries[userAnswer])" // project 2 challange #2
             userScore -= 5
         }
 

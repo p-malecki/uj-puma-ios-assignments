@@ -34,14 +34,14 @@ struct ContentView: View {
                     }
                 }
                 
-                // #3
+                // project 5 challange #3
                 Section {
                     Text("Score: \(score)")
-                    
+                    .font(.subheadline.weight(.semibold))
                 }
             }
             .navigationTitle(rootWord)
-            .toolbar { // #2
+            .toolbar { // project 5 challange #2
                 Button("start new game") {
                     startGame()
                 }
@@ -59,7 +59,7 @@ struct ContentView: View {
 
         guard answer.count > 0 else { return }
         
-        // #1
+        // project 5 challange #1
         guard isLongEnough(word: answer) else {
             wordError(title: "Word is to short", message: "Pass longer word (at least 3 chars)!")
             return
@@ -89,7 +89,7 @@ struct ContentView: View {
     }
 
     func startGame() {
-        newWord = "" // #2
+        newWord = "" // project 5 challange #2
         usedWords = [String]()
         score = 0
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
@@ -108,7 +108,7 @@ struct ContentView: View {
     }
     
     func isOriginal(word: String) -> Bool {
-        !usedWords.contains(word) && word != rootWord // #1
+        !usedWords.contains(word) && word != rootWord // project 5 challange #1
     }
 
     func isPossible(word: String) -> Bool {
@@ -137,11 +137,7 @@ struct ContentView: View {
         errorMessage = message
         showingError = true
     }
-    
-    func countScore() {
-        
-    }
-    
+       
 }
 
 #Preview {

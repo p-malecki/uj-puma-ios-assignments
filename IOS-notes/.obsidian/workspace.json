@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
+                "file": "hackingwithswift - swiftUI/project 10 -.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
+                "file": "hackingwithswift - swiftUI/project 10 -.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
+                "file": "hackingwithswift - swiftUI/project 10 -.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md"
+                "file": "hackingwithswift - swiftUI/project 10 -.md"
               }
             }
           }
@@ -149,9 +148,10 @@
   },
   "active": "976ab2584fb64635",
   "lastOpenFiles": [
+    "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
+    "hackingwithswift - swiftUI/project 10 -.md",
     "hackingwithswift - swiftUI/project 2 - stacks, gradients, images, alerts.md",
     "hackingwithswift - swiftUI/project 4 - dates, coreML.md",
-    "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
     "hackingwithswift - swiftUI/project 8 - scroll views, Codable.md",
     "hackingwithswift - swiftUI/project 6 - animations.md",
     "attachments/Pasted image 20231220001151.png",

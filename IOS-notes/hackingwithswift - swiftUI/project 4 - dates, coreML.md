@@ -1,18 +1,19 @@
-## user input
+# user input
 - +-
 ```swift
 Stepper("\(sleepAmount) hours", value: $sleepAmount, in: 4...12, step: 0.25)
 ```
 
-## dates
-- **DatePicker**
+# dates
+### DatePicker
 ```swift
 DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
 .labelsHidden()
 ```
 `in` parameter that works just the same as with `Stepper`
 
-- `**DateComponents**`, which lets us read or write specific parts of a date rather than the whole thing
+### DateComponent,
+which lets us read or write specific parts of a date rather than the whole thing
 ```swift
 var components = DateComponents()
 components.hour = 8
@@ -26,7 +27,7 @@ let hour = components.hour ?? 0
 let minute = components.minute ?? 0
 ```
 
-- **formatting**
+### formatting
 ```swift
 Text(Date.now, format: .dateTime.day().month().year())
 ```
@@ -35,12 +36,20 @@ Text(Date.now, format: .dateTime.day().month().year())
 ```swift
 Text(Date.now.formatted(date: .long, time: .shortened))
 ```
-## Create ML
+
+### DateFormatter
+```swift
+let formatter = DateFormatter()
+formatter.dateFormat = "y-MM-dd"
+decoder.dateDecodingStrategy = .formatted(formatter)
+```
+
+# Create ML
  *lets us create custom machine learning models of our own*
  (using a dedicated Create ML app that makes the whole process drag and drop)
 
 
-##  Core ML
+#  Core ML
 *lets us make apps using machine learning*
 
 **tabular regression** - we can throw a load of spreadsheet-like data at Create ML and ask it to figure out the relationship between various values

@@ -12,6 +12,7 @@ struct CheckoutView: View {
 
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
+    @State private var showingPlaceOrderFailed = false
 
     var body: some View {
         ScrollView {
@@ -44,9 +45,16 @@ struct CheckoutView: View {
         } message: {
             Text(confirmationMessage)
         }
+        .alert("Check out failed!", isPresented: $showingPlaceOrderFailed) { // project 10 challange #2
+            Button("OK") { }
+        } message: {
+            Text("There is no internet connection. Try again later.")
+        }
     }
 
     func placeOrder() async {
+        showingPlaceOrderFailed = false
+
         guard let encoded = try? JSONEncoder().encode(order) else {
             print("Failed to encode order")
             return
@@ -55,7 +63,7 @@ struct CheckoutView: View {
         let url = URL(string: "https://reqres.in/api/cupcakes")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+        //request.httpMethod = "POST" // comment out to test no internet connection case
 
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
@@ -64,6 +72,7 @@ struct CheckoutView: View {
             confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
             showingConfirmation = true
         } catch {
+            showingPlaceOrderFailed = true
             print("Check out failed: \(error.localizedDescription)")
         }
     }

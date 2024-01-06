@@ -4,8 +4,11 @@
 //
 //  Created by Paul Hudson on 10/11/2023.
 //
+//  Modified by Pawel Malecki for UJ PUMAIOS course on 06/01/2024.
+
 
 import Foundation
+
 
 @Observable
 class Order: Codable {
@@ -15,6 +18,7 @@ class Order: Codable {
         case _specialRequestEnabled = "specialRequestEnabled"
         case _extraFrosting = "extraFrosting"
         case _addSprinkles = "addSprinkles"
+
         case _name = "name"
         case _city = "city"
         case _streetAddress = "streetAddress"
@@ -43,8 +47,10 @@ class Order: Codable {
     var city = ""
     var zip = ""
 
+
+    // project 10 challange #1
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        if ![name, streetAddress, city, zip].allSatisfy({ !$0.isEmpty && !$0.allSatisfy { $0.isWhitespace } }) {
             return false
         }
 

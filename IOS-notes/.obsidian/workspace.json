@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 10 -.md",
+                "file": "hackingwithswift - swiftUI/project 7 - UserDefaults.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "forea",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 10 -.md",
+                "file": "hackingwithswift - swiftUI/project 7 - UserDefaults.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 10 -.md",
+                "file": "hackingwithswift - swiftUI/project 7 - UserDefaults.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 10 -.md"
+                "file": "hackingwithswift - swiftUI/project 7 - UserDefaults.md"
               }
             }
           }
@@ -146,10 +147,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "976ab2584fb64635",
+  "active": "f245945878ad3a29",
   "lastOpenFiles": [
-    "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
     "hackingwithswift - swiftUI/project 10 -.md",
+    "hackingwithswift - swiftUI/project 7 - UserDefaults.md",
+    "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
     "hackingwithswift - swiftUI/project 2 - stacks, gradients, images, alerts.md",
     "hackingwithswift - swiftUI/project 4 - dates, coreML.md",
     "hackingwithswift - swiftUI/project 8 - scroll views, Codable.md",

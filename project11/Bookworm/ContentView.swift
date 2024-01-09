@@ -14,7 +14,7 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [
         SortDescriptor(\.title),
         SortDescriptor(\.author)
-    ]) var books: FetchedResults<Book>
+    ]) var books: [Book] //FetchedResults<Book>
 
     @State private var showingAddScreen = false
 

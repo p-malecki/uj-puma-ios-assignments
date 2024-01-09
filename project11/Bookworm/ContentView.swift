@@ -4,6 +4,8 @@
 //
 //  Created by Paul Hudson on 23/11/2021.
 //
+//  Modified by Pawel Malecki for UJ PUMAIOS course on 09/01/2024.
+
 
 import SwiftUI
 
@@ -30,6 +32,7 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title ?? "Unknown Title")
                                     .font(.headline)
+                                    .foregroundColor(book.rating == 1 ? .red : .black)  // project 11 challange #2
 
                                 Text(book.author ?? "Unknown Author")
                                     .foregroundColor(.secondary)

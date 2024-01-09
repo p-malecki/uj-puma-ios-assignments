@@ -132,3 +132,7 @@ trying to create a SwiftData model object without a container around is likely t
     }
 }
 ```
+
+
+# .buttonStyle(.plain)
+That makes SwiftUI treat each button individually for e.g. in star ratings.

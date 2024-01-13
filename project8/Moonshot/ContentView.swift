@@ -16,24 +16,30 @@ struct ContentView: View {
     let missions: [Mission] = Bundle.main.decode("missions.json")
 
     var body: some View {
-
+        
         NavigationStack {
-            // project 8 challange #3
-            if missionsAsGrid {
-                GridLayoutView(astronauts: astronauts, missions: missions)
-            } else {
-                ListLayoutView(astronauts: astronauts, missions: missions)
+            VStack {
+                // project 8 challange #3
+                Group {
+                    if missionsAsGrid {
+                        GridLayoutView(astronauts: astronauts, missions: missions)
+                    } else {
+                        ListLayoutView(astronauts: astronauts, missions: missions)
+                    }
+                }
+                
             }
-        }
             .navigationTitle("Moonshot")
             .toolbar {   // project 8 challange #3
-                Button("Grid view") {
-                    //$missionsAsGrid.toggle()
-                    $missionsAsGrid = !missionsAsGrid
+                Button(missionsAsGrid ? "List view":"Grid view") {
+                    missionsAsGrid.toggle()
                 }
             }
             .background(.darkBackground)
-            .preferredColorScheme(.dark)
+        }
+        
+        .preferredColorScheme(.dark)
+        //.edgesIgnoringSafeArea(.top)
     }
 }
 

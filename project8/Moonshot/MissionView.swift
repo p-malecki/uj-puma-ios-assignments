@@ -57,13 +57,10 @@ struct MissionView: View {
                     NavigationLink {
                         CrewView(crewMembers: crew)
                     } label: {
-                        VStack {
-                            Text("See the mission crew")
-                        }
-                        .font(.largeTitle)
+                        Text("See the mission crew")
+                            .font(.subheadline)
                     }
                 }
-                //.navigationTitle("See the mission crew")
                 
             }
             .padding(.bottom)

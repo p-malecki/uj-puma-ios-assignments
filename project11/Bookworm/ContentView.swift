@@ -8,13 +8,15 @@
 
 
 import SwiftUI
+import SwiftData
+
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.title),
-        SortDescriptor(\.author)
-    ]) var books: [Book] //FetchedResults<Book>
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: [
+        SortDescriptor(\Book.title),
+        SortDescriptor(\Book.author)
+    ]) var books: [Book]
 
     @State private var showingAddScreen = false
 
@@ -30,11 +32,11 @@ struct ContentView: View {
                                 .font(.largeTitle)
 
                             VStack(alignment: .leading) {
-                                Text(book.title ?? "Unknown Title")
+                                Text(book.title) //  ?? "Unknown Title"
                                     .font(.headline)
                                     .foregroundColor(book.rating == 1 ? .red : .black)  // project 11 challange #2
 
-                                Text(book.author ?? "Unknown Author")
+                                Text(book.author) //  ?? "Unknown Author"
                                     .foregroundColor(.secondary)
                             }
                         }
@@ -65,15 +67,12 @@ struct ContentView: View {
     func deleteBooks(at offsets: IndexSet) {
         for offset in offsets {
             let book = books[offset]
-            moc.delete(book)
+            modelContext.delete(book)
         }
-
-//        try? moc.save()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+
+#Preview {
+    ContentView()
 }

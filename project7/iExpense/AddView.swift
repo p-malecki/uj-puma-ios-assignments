@@ -15,11 +15,14 @@ struct AddView: View {
     @State private var amount = 0.0
     @State private var currency = ""
     
-    let availableCurrencies: [String] = {
-        let locales = Locale.availableIdentifiers.map { Locale(identifier: $0) }
-        return locales.compactMap { $0.currency?.identifier }
-    }()
+    let currencyCodes = [
+        "PLN", "USD", "EUR", "JPY", "GBP",
+        "CAD", "CHF", "CNY", "SEK", "NZD",
+        "MXN", "SGD", "HKD", "NOK", "KRW",
+        "TRY", "INR", "BRL", "ZAR", "RUB"
+    ]
 
+    
     var expenses: Expenses
 
     let types = ["Business", "Personal"]
@@ -34,18 +37,12 @@ struct AddView: View {
                         Text($0)
                     }
                 }
-
-                TextField("Amount", value: $amount, format: .currency(code: "USD"))
+                
+                TextField("Amount", value: $amount, format: .currency(code: currency != "" ? currency:"PLN"))
                     .keyboardType(.decimalPad)
                 
-                Picker("Type", selection: $type) {
-                    ForEach(types, id: \.self) {
-                        Text($0)
-                    }
-                }
-                
                 Picker("Currency", selection: $currency) {
-                    ForEach(availableCurrencies, id: \.self) {
+                   ForEach(currencyCodes, id: \.self) {
                         Text($0)
                     }
                     .pickerStyle(WheelPickerStyle())
@@ -60,6 +57,7 @@ struct AddView: View {
                 }
             }
         }
+        
     }
 }
 

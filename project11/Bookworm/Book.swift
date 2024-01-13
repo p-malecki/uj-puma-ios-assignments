@@ -11,10 +11,10 @@ class Book {
     var author: String
     var genre: String 
     var review: String
-    var rating: Int
+    var rating: Int16
     var date: Date // project 11 challange #3
     
-    init(title: String, author: String, genre: String, review: String, rating: Int, date: Date) {
+    init(title: String, author: String, genre: String, review: String, rating: Int16, date: Date) {
         self.title = title
         self.author = author
         self.genre = genre

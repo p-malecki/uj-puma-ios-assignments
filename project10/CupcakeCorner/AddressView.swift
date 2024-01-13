@@ -22,10 +22,18 @@ struct AddressView: View {
             .onAppear {
                 loadFromUserDefaults()
             }
-            .onChange(of: order.name, perform: { saveToUserDefaults(value: order.name, key: "name") })
-            .onChange(of: order.streetAddress, perform: { saveToUserDefaults(value: order.streetAddress, key: "streetAddress") })
-            .onChange(of: order.city, perform: { saveToUserDefaults(value: order.city, key: "city") })
-            .onChange(of: order.zip, perform: { saveToUserDefaults(value: order.zip, key: "zip") })
+            .onChange(of: order.name) {
+                saveToUserDefaults(value: order.name, key: "name")
+            }
+            .onChange(of: order.streetAddress) {
+                saveToUserDefaults(value: order.streetAddress, key: "streetAddress")
+            }
+            .onChange(of: order.city) {
+                saveToUserDefaults(value: order.city, key: "city")
+            }
+            .onChange(of: order.zip) {
+                saveToUserDefaults(value: order.zip, key: "zip")
+            }
 
             Section {
                 NavigationLink("Check out") {

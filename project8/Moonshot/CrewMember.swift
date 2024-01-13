@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CrewMember: Codable, Identifiable {
+struct CrewMember: Codable {
     let role: String
     let astronaut: Astronaut
 }

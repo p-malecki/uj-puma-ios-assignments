@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct AddBookView: View {
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
 
     @State private var title = ""
@@ -26,10 +26,6 @@ struct AddBookView: View {
         NavigationView {
             Form {
                 Section {
-                    // project 11 challange #3
-                    Text(date, format: .dateTime.day().month().year())
-                        .foregroundColor(.secondary)
-
                     TextField("Name of book", text: $title)
                     TextField("Author's name", text: $author)
 
@@ -38,6 +34,10 @@ struct AddBookView: View {
                             Text($0)
                         }
                     }
+                    
+                    // project 11 challange #3
+                    Text(date, format: .dateTime.day().month().year())
+                        .foregroundColor(.secondary)
                 }
 
                 Section {
@@ -49,16 +49,8 @@ struct AddBookView: View {
 
                 Section {
                     Button("Save") {
-                        let newBook = Book(context: moc)
-                        newBook.id = UUID()
-                        newBook.title = title
-                        newBook.author = author
-                        newBook.rating = Int16(rating)
-                        newBook.review = review
-                        newBook.genre = genre
-                        newBook.date = date
-
-                        try? moc.save()
+                        let newBook = Book(title: title, author: author, genre: genre, review: review, rating: Int16(rating), date: date)
+                        modelContext.insert(newBook)
                         dismiss()
                     }
                 }
@@ -68,8 +60,6 @@ struct AddBookView: View {
     }
 }
 
-struct AddBookView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddBookView()
-    }
+#Preview {
+    ContentView()
 }

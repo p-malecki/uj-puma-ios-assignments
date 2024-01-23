@@ -4,10 +4,13 @@
 //
 //  Created by Paul Hudson on 16/10/2023.
 //
+//  Modified by Pawel Malecki for UJ PUMAIOS course on 23/01/2024.
+
 
 import SwiftUI
 
 struct AddView: View {
+    @Environment(\.modelContext) var modelContext  // project 12 challange #1
     @Environment(\.dismiss) var dismiss
 
     @State private var name = ""
@@ -21,9 +24,6 @@ struct AddView: View {
         "MXN", "SGD", "HKD", "NOK", "KRW",
         "TRY", "INR", "BRL", "ZAR", "RUB"
     ]
-
-    
-    var expenses: Expenses
 
     let types = ["Business", "Personal"]
 
@@ -51,16 +51,15 @@ struct AddView: View {
             .navigationTitle("Add new expense")
             .toolbar {
                 Button("Save") {
-                    let item = ExpenseItem(name: name, type: type, amount: amount, currency: currency)
-                    expenses.items.append(item)
+                    let newItem = ExpenseItem(name: name, type: type, amount: amount, currency: currency)
+                    modelContext.insert(newItem)
                     dismiss()
                 }
             }
         }
-        
     }
 }
 
 #Preview {
-    AddView(expenses: Expenses())
+    AddView()
 }

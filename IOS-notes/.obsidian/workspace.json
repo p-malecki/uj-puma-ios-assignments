@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 11 - @Binding, SwiftData.md",
+                "file": "hackingwithswift - swiftUI/project 12 - swiftData.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 11 - @Binding, SwiftData.md",
+                "file": "hackingwithswift - swiftUI/project 12 - swiftData.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 11 - @Binding, SwiftData.md",
+                "file": "hackingwithswift - swiftUI/project 12 - swiftData.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "hackingwithswift - swiftUI/project 11 - @Binding, SwiftData.md"
+                "file": "hackingwithswift - swiftUI/project 12 - swiftData.md"
               }
             }
           }
@@ -148,13 +148,14 @@
   },
   "active": "976ab2584fb64635",
   "lastOpenFiles": [
+    "hackingwithswift - swiftUI/project 11 - @Binding, SwiftData.md",
+    "hackingwithswift - swiftUI/project 12 - swiftData.md",
     "hackingwithswift - swiftUI/project 4 - dates, coreML.md",
     "hackingwithswift - swiftUI/project 2 - stacks, gradients, images, alerts.md",
     "hackingwithswift - swiftUI/project 8 - scroll views, Codable.md",
     "hackingwithswift - swiftUI/project 7 - UserDefaults.md",
     "hackingwithswift - swiftUI/project 1 - swiftUI basics, @state, picker.md",
     "hackingwithswift - swiftUI/project 6 - animations.md",
-    "hackingwithswift - swiftUI/project 11 - @Binding, SwiftData.md",
     "hackingwithswift - swiftUI/project 10 - async, urls, @Observable, haptic, @Bindable.md",
     "attachments/Pasted image 20231220001151.png",
     "attachments",

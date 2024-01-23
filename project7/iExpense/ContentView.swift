@@ -4,76 +4,42 @@
 //
 //  Created by Paul Hudson on 15/10/2023.
 //
+//  Modified by Pawel Malecki for UJ PUMAIOS course on 23/01/2024.
+
 
 import SwiftUI
+import SwiftData
 
-struct ExpenseItem: Identifiable, Codable {
-    var id = UUID()
-    let name: String
-    let type: String
-    let amount: Double
-    let currency: String
-}
-
-@Observable
-class Expenses {
-    var items = [ExpenseItem]() {
-        didSet {
-            if let encoded = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encoded, forKey: "Items")
-            }
-        }
-    }
-
-    init() {
-        if let savedItems = UserDefaults.standard.data(forKey: "Items") {
-            if let decodedItems = try? JSONDecoder().decode([ExpenseItem].self, from: savedItems) {
-                items = decodedItems
-                return
-            }
-        }
-
-        items = []
-    }
-}
 
 struct ContentView: View {
-    @State private var expenses = Expenses()
+    @Environment(\.modelContext) var modelContext  // project 12 challange #1
+    @Query var expenseItems: [ExpenseItem]
+
     @State private var showingAddExpense = false
+    @State private var sortOrder = [SortDescriptor(\ExpenseItem.name)]   // project 12 challange #2
+    @State private var filterType = "personal"  // project 12 challange #3
 
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
 
-                            Text(item.type)
-                        }
+        Menu("Sort and Filter", systemImage: "arrow.up.arrow.down") {  // project 12 challange #2
+            Picker("Sort", selection: $sortOrder) {
+                Text("Sort by Name")
+                    .tag([SortDescriptor(\ExpenseItem.name)])
 
-                        Spacer()
-
-                        Text(item.amount, format: .currency(code: item.currency))
-                    }
-                }
-                .onDelete(perform: removeItems)
+                Text("Sort by Amount")
+                    .tag([SortDescriptor(\ExpenseItem.amount)])
             }
-            .navigationTitle("iExpense")
-            .toolbar {
-                Button("Add Expense", systemImage: "plus") {
-                    showingAddExpense = true
-                }
-            }
-            .sheet(isPresented: $showingAddExpense) {
-                AddView(expenses: expenses)
+
+            Picker("Filter", selection: $sortOrder) {
+                Text("Personal expenses only")
+                    .tag( filterType = "Personal" )
+
+                Text("Business expenses only")
+                    .tag([ filterType = "Business" ])
             }
         }
-    }
 
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+        ExpensesView(type: filterType, sortOrder: sortOrder)
     }
 }
 

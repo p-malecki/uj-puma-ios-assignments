@@ -2,7 +2,7 @@
 //  GuessTheFlagApp.swift
 //  GuessTheFlag
 //
-//  Created by Paul Hudson on 11/10/2023.
+//  Created by Student1 on 06/12/2023.
 //
 
 import SwiftUI

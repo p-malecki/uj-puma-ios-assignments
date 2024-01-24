@@ -2,9 +2,8 @@
 //  ContentView.swift
 //  GuessTheFlag
 //
-//  Created by Paul Hudson on 11/10/2023.
+//  Created by Student1 on 06/12/2023.
 //
-//  Modified by Pawel Malecki for UJ PUMAIOS course on 06/12/2023.
 
 import SwiftUI
 
@@ -12,7 +11,7 @@ struct FlagImage: View { // project 3 challange #2
     var img: String
     var body: some View {
         Image(img)
-            .flagImageModified()
+            .flagImageModified() // project 3 challange #3
     }
 }
 
@@ -25,20 +24,20 @@ struct FlagImageModifier: ViewModifier {  // project 3 challange #3
 }
 
 extension View {
-    func flagImageModified() -> some View {
+    func flagImageModified() -> some View {  // project 3 challange #3
         modifier(FlagImageModifier())
     }
 }
 
 
-extension AnyTransition {
-    static var pivot: AnyTransition {
-        .modifier(
-            active: CornerRotateModifier(amount: -90, anchor: .topLeading),
-            identity: .opacity
-        )
-    }
-}
+//extension AnyTransition {
+//    static var pivot: AnyTransition {
+//        .modifier(
+//            active: CornerRotateModifier(amount: -90, anchor: .topLeading),
+//            identity: .opacity
+//        )
+//    }
+//}
 
 
 struct ContentView: View {
@@ -55,7 +54,7 @@ struct ContentView: View {
     @State private var currentRound = 1
     @State private var endingGame = false // project 2 challange #3
 
-    @State private var animateFlag360Spin = 0.0
+    @State private var animateFlag360Spin = [0.0, 0.0, 0.0]
     @State private var animateFlagOpacity = [true, true, true]
     @State private var animateFlagSize = [1.0, 1.0, 1.0]
 
@@ -89,7 +88,7 @@ struct ContentView: View {
                     ForEach(0..<3) { selectedIndex in
                         Button {
                             withAnimation(.spring(duration: 1, bounce: 0.5)) {  // project 6 challange #1
-                                animateFlag360Spin += 360
+                                animateFlag360Spin[selectedIndex] += 360
                             }
                             withAnimation(.spring().speed(0.2)) {  // project 6 challange #2
                                 animateFlagOpacity.indices.forEach { index in
@@ -99,11 +98,11 @@ struct ContentView: View {
                             }
                             flagTapped(selectedIndex)
                         } label: {
-                            FlagImage(img: countries[numbselectedIndexer]) // project 3 challange #3
+                            FlagImage(img: countries[selectedIndex]) // project 3 challange #3
                         }
-                        .rotation3DEffect(.degrees(animateFlag360Spin), axis: (x: 0, y: 1, z: 0))
+                        .rotation3DEffect(.degrees(animateFlag360Spin[selectedIndex]), axis: (x: 0, y: 1, z: 0))
                         .opacity(animateFlagOpacity[selectedIndex] ? 1.0 : 0.25)
-                        .animation(nil, value: enabled)
+                        //.animation(nil, value: enabled)
                         .scaleEffect(animateFlagSize[selectedIndex])  // project 6 challange #3
                         .animation(.easeInOut(duration: 1), value: animateFlagSize[selectedIndex])
                     }
@@ -162,6 +161,8 @@ struct ContentView: View {
     func nextRound() {
         if (currentRound < numberOfRounds) {
             currentRound += 1
+            
+            animateFlag360Spin = [0.0, 0.0, 0.0]
             animateFlagOpacity = [true, true, true]
             animateFlagSize = [1.0, 1.0, 1.0]
         } else {

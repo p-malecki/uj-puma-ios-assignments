@@ -2,7 +2,7 @@
 //  InstafilterApp.swift
 //  Instafilter
 //
-//  Created by Paul Hudson on 01/12/2021.
+//  Created by Studen1 on 23/01/2024.
 //
 
 import SwiftUI

@@ -2,10 +2,8 @@
 //  ContentView.swift
 //  Instafilter
 //
-//  Created by Paul Hudson on 01/12/2021.
+//  Created by Studen1 on 23/01/2024.
 //
-//  Modified by Pawel Malecki for UJ PUMAIOS course on 23/01/2024.
-
 
 import CoreImage
 import CoreImage.CIFilterBuiltins
@@ -14,8 +12,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
-    @State private var filterRadius = 100
-    @State private var filterScale = 5
+    @State private var filterRadius = 0.5
+    @State private var filterScale = 0.5
 
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
@@ -51,18 +49,25 @@ struct ContentView: View {
                     Slider(value: $filterIntensity)
                         .onChange(of: filterIntensity) { _ in applyProcessing() }
                         .disabled(isImageSelected) // project 13 challange #1
-
+                }
+                .padding(.vertical)
+                
+                HStack {
                     Text("Radius") // project 13 challange #2
                     Slider(value: $filterRadius)
                         .onChange(of: filterRadius) { _ in applyProcessing() }
                         .disabled(isImageSelected)
-
+                }
+                .padding(.vertical)
+                
+                HStack {
                     Text("Scale") // project 13 challange #2
                     Slider(value: $filterScale)
                         .onChange(of: filterScale) { _ in applyProcessing() }
                         .disabled(isImageSelected)
                 }
                 .padding(.vertical)
+                              
 
                 HStack {
                     Button("Change Filter") {
@@ -79,8 +84,7 @@ struct ContentView: View {
             }
             .padding([.horizontal, .bottom])
             .navigationTitle("Instafilter")
-            //.onChange(of: inputImage) { _ in loadImage() }
-            .onChange(of: inputImage) {  // project 13 challange #1
+            .onChange(of: inputImage) { _ in // project 13 challange #1
                 loadImage()
                 isImageSelected = (inputImage == nil)
             }
@@ -95,6 +99,11 @@ struct ContentView: View {
                 Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
                 Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
                 Button("Vignette") { setFilter(CIFilter.vignette()) }
+                // project 13 challange #3
+                Button("Comic Effect") { setFilter(CIFilter.comicEffect()) }
+                Button("Sharpen Luminance") { setFilter(CIFilter.sharpenLuminance()) }
+                Button("Gloom") { setFilter(CIFilter.gloom()) }
+                Button("Edge Work") { setFilter(CIFilter.edgeWork()) }
                 Button("Cancel", role: .cancel) { }
             }
         }
@@ -129,8 +138,8 @@ struct ContentView: View {
         let inputKeys = currentFilter.inputKeys
 
         if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey) }
-        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale, forKey: kCIInputScaleKey) }
+        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey) }
+        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale * 10, forKey: kCIInputScaleKey) }
 
         guard let outputImage = currentFilter.outputImage else { return }
 

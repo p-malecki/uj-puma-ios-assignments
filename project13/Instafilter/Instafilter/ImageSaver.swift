@@ -2,7 +2,7 @@
 //  ImageSaver.swift
 //  Instafilter
 //
-//  Created by Paul Hudson on 02/12/2021.
+//  Created by Studen1 on 23/01/2024.
 //
 
 import UIKit

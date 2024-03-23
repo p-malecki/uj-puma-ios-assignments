@@ -5,6 +5,8 @@ This repository contains a collection of small iOS app projects developed using 
 
 ## Screenshots
 
+![App Screenshots](https://raw.githubusercontent.com/p-malecki/uj-puma-ios-assignments/main/screenshots/apps2.png?token=GHSAT0AAAAAACGZ7M32PTOWCUOTDGJZHST4ZP66RBA)
+
 ![App Screenshots](https://github.com/p-malecki/uj-puma-ios-assignments/blob/main/screenshots/all_apps.png?raw=true)
 
 

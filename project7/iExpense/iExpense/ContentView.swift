@@ -28,6 +28,9 @@ struct ContentView: View {
             }
 
             Picker("Filter", selection: $filterType) {
+                Text("All expenses")
+                    .tag("All")
+                
                 Text("Personal expenses only")
                     .tag("Personal")
 

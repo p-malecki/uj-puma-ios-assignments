@@ -47,9 +47,15 @@ struct ExpensesView: View { // project 12 challange #2, #3
     }
 
     init(type: String, sortOrder: [SortDescriptor<ExpenseItem>]) {   // project 12 challange #2, #3
-        _expenseItems = Query(filter: #Predicate<ExpenseItem> { item in
-            item.type == type
-        }, sort: sortOrder)
+        if (type == "All") {
+            _expenseItems = Query(filter: nil, sort: sortOrder)
+        }
+        else {
+            _expenseItems = Query(filter: #Predicate<ExpenseItem> { item in
+                item.type == type
+            }, sort: sortOrder)
+        }
+        
     }
 
     func removeItems(at offsets: IndexSet) {  // project 12 challange #1
@@ -58,7 +64,6 @@ struct ExpensesView: View { // project 12 challange #2, #3
             modelContext.delete(item)
         }
     }
-
 }
 
 #Preview {
